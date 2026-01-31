@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Dr. Shapiro's Claude Code Mastery Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+            min-height: 100vh;
+            color: #f1f5f9;
+            line-height: 1.7;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: rgba(30, 27, 75, 0.98);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255,255,255,0.1);
+            overflow-y: auto;
+            z-index: 100;
+            padding: 20px 0;
+        }
+
+        .sidebar-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sidebar-header p {
+            font-size: 0.75rem;
+            color: #a78bfa;
+            margin-top: 5px;
+        }
+
+        .nav-section {
+            padding: 0 12px;
+            margin-bottom: 24px;
+        }
+
+        .nav-section-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #7c3aed;
+            padding: 0 12px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: #cbd5e1;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 4px;
+            transition: all 0.2s;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(124, 58, 237, 0.3);
+            color: #fff;
+        }
+
+        .nav-item.active {
+            background: #7c3aed;
+            color: #fff;
+        }
+
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .nav-item .icon-journey { color: #f59e0b; }
+        .nav-item .icon-mindset { color: #ec4899; }
+        .nav-item .icon-twoclaudes { color: #06b6d4; }
+        .nav-item .icon-quickstart { color: #10b981; }
+        .nav-item .icon-keyboard { color: #8b5cf6; }
+        .nav-item .icon-costs { color: #f59e0b; }
+        .nav-item .icon-bigprojects { color: #3b82f6; }
+        .nav-item .icon-deployment { color: #10b981; }
+        .nav-item .icon-comparison { color: #ef4444; }
+        .nav-item .icon-ideas { color: #eab308; }
+        .nav-item .icon-inspiration { color: #ec4899; }
+        .nav-item .icon-reference { color: #06b6d4; }
+
+        .nav-item:hover i,
+        .nav-item.active i {
+            color: #fff;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
+            border-radius: 24px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #818cf8, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #a5b4fc;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero .highlight {
+            color: #34d399;
+            font-weight: 600;
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-header h2 i {
+            font-size: 1.8rem;
+        }
+
+        .section-header p {
+            color: #94a3b8;
+            font-size: 1.05rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: rgba(30, 27, 75, 0.6);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: rgba(124, 58, 237, 0.5);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            color: #94a3b8;
+            margin-bottom: 8px;
+        }
+
+        .card-red { border-left: 4px solid #ef4444; }
+        .card-green { border-left: 4px solid #10b981; }
+        .card-blue { border-left: 4px solid #3b82f6; }
+        .card-purple { border-left: 4px solid #8b5cf6; }
+        .card-orange { border-left: 4px solid #f59e0b; }
+        .card-cyan { border-left: 4px solid #06b6d4; }
+        .card-pink { border-left: 4px solid #ec4899; }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(30, 27, 75, 0.6);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        th {
+            background: rgba(124, 58, 237, 0.3);
+            font-weight: 600;
+            color: #c4b5fd;
+        }
+
+        tr:hover {
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        /* Code blocks */
+        .code-block {
+            background: #0d1117;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        kbd {
+            background: linear-gradient(180deg, #4a5568 0%, #2d3748 100%);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.85rem;
+            border: 1px solid #718096;
+            box-shadow: 0 2px 0 #1a202c;
+            color: #fff;
+        }
+
+        /* Tip boxes */
+        .tip-box {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+        }
+
+        .tip-box.warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-left-color: #f59e0b;
+        }
+
+        .tip-box.info {
+            background: rgba(59, 130, 246, 0.1);
+            border-left-color: #3b82f6;
+        }
+
+        .tip-box.purple {
+            background: rgba(139, 92, 246, 0.1);
+            border-left-color: #8b5cf6;
+        }
+
+        .tip-box-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        /* Transformation comparison */
+        .transform-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 30px;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .transform-arrow {
+            font-size: 3rem;
+            color: #06b6d4;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        /* Trophy banner */
+        .trophy-banner {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .trophy-banner .icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .trophy-banner h3 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #818cf8, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Calculator */
+        .calculator-box {
+            background: rgba(30, 27, 75, 0.8);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .calc-input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .calc-input-row label {
+            display: block;
+            margin-bottom: 8px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .calc-input-row input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .calc-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #7c3aed, #3b82f6);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .calc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Quote box */
+        .quote-box {
+            text-align: center;
+            padding: 40px;
+            background: rgba(30, 27, 75, 0.8);
+            border-radius: 16px;
+            border: 2px solid #7c3aed;
+            margin: 40px 0;
+        }
+
+        .quote-box .before {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin-bottom: 10px;
+        }
+
+        .quote-box .arrow {
+            font-size: 1.5rem;
+            color: #06b6d4;
+            margin: 15px 0;
+        }
+
+        .quote-box .after {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #818cf8, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .quote-box .attribution {
+            margin-top: 20px;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 80px;
+                padding: 15px 0;
+            }
+            .sidebar-header h1,
+            .sidebar-header p,
+            .nav-section-title,
+            .nav-item span {
+                display: none;
+            }
+            .nav-item {
+                justify-content: center;
+                padding: 15px;
+            }
+            .nav-item i {
+                font-size: 1.3rem;
+            }
+            .main-content {
+                margin-left: 80px;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .transform-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .transform-arrow {
+                transform: rotate(90deg);
+            }
+            .calc-input-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(124, 58, 237, 0.5);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(124, 58, 237, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1>🧠⚡ Claude Code Mastery</h1>
+            <p>Dr. Shapiro's Complete Guide</p>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Your Journey</div>
+            <a class="nav-item active" onclick="showSection('journey')">
+                <i class="fas fa-trophy icon-journey"></i>
+                <span>Transformation</span>
+            </a>
+            <a class="nav-item" onclick="showSection('mindset')">
+                <i class="fas fa-brain icon-mindset"></i>
+                <span>Mindset Shift</span>
+            </a>
+            <a class="nav-item" onclick="showSection('twoclaudes')">
+                <i class="fas fa-handshake icon-twoclaudes"></i>
+                <span>Two Claudes</span>
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Getting Started</div>
+            <a class="nav-item" onclick="showSection('quickstart')">
+                <i class="fas fa-rocket icon-quickstart"></i>
+                <span>Quick Start</span>
+            </a>
+            <a class="nav-item" onclick="showSection('keyboard')">
+                <i class="fas fa-keyboard icon-keyboard"></i>
+                <span>Shortcuts</span>
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Advanced</div>
+            <a class="nav-item" onclick="showSection('costs')">
+                <i class="fas fa-coins icon-costs"></i>
+                <span>API Costs</span>
+            </a>
+            <a class="nav-item" onclick="showSection('bigprojects')">
+                <i class="fas fa-building icon-bigprojects"></i>
+                <span>Big Projects</span>
+            </a>
+            <a class="nav-item" onclick="showSection('deployment')">
+                <i class="fas fa-cloud-upload-alt icon-deployment"></i>
+                <span>Deployment</span>
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Knowledge</div>
+            <a class="nav-item" onclick="showSection('comparison')">
+                <i class="fas fa-balance-scale icon-comparison"></i>
+                <span>vs Lovable</span>
+            </a>
+            <a class="nav-item" onclick="showSection('ideas')">
+                <i class="fas fa-lightbulb icon-ideas"></i>
+                <span>Project Ideas</span>
+            </a>
+            <a class="nav-item" onclick="showSection('inspiration')">
+                <i class="fas fa-star icon-inspiration"></i>
+                <span>Inspiration</span>
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Reference</div>
+            <a class="nav-item" onclick="showSection('reference')">
+                <i class="fas fa-clipboard-list icon-reference"></i>
+                <span>Cheat Sheet</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section (always visible) -->
+        <div class="hero">
+            <div class="hero-icon">🧠⚡</div>
+            <h2>Dr. Shapiro's Claude Code Mastery Guide</h2>
+            <p>From <em>"I Don't Know Code"</em> to Building Real Applications — <span class="highlight">In One Day!</span></p>
+        </div>
+
+        <!-- Journey Section -->
+        <div id="journey" class="section active">
+            <div class="section-header">
+                <h2><i class="fas fa-trophy" style="color: #f59e0b;"></i> Your Incredible Transformation</h2>
+                <p>Look how far you've come in just a few hours!</p>
+            </div>
+
+            <div class="transform-grid">
+                <div class="card card-red">
+                    <div class="card-title" style="color: #ef4444;">😰 This Morning You:</div>
+                    <p>• Had never heard of Claude Code</p>
+                    <p>• Were scared of terminals and command lines</p>
+                    <p>• Thought "Python" was just a snake</p>
+                    <p>• Were limited to Lovable & Emergent</p>
+                    <p>• Couldn't touch files on your own computer</p>
+                    <p>• Didn't understand APIs or automation</p>
+                    <p>• Had no idea about deployment</p>
+                </div>
+
+                <div class="transform-arrow">➡️</div>
+
+                <div class="card card-green">
+                    <div class="card-title" style="color: #10b981;">🚀 Tonight You:</div>
+                    <p>• Installed & mastered Claude Code Desktop</p>
+                    <p>• Built multiple working applications</p>
+                    <p>• Created Python automation scripts</p>
+                    <p>• Understand APIs, tokens, and costs</p>
+                    <p>• Can process YOUR files with AI</p>
+                    <p>• Know how to deploy to the internet</p>
+                    <p>• Can build backends and databases</p>
+                    <p>• <strong style="color: #34d399;">ARE A REAL DEVELOPER!</strong></p>
+                </div>
+            </div>
+
+            <div class="trophy-banner">
+                <div class="icon">🏆</div>
+                <h3>You Learned All This In ONE DAY!</h3>
+                <p style="color: #a5b4fc; margin-top: 10px;">Most people take months to learn what you accomplished today.</p>
+            </div>
+
+            <div class="tip-box purple">
+                <div class="tip-box-title">💜 What You Accomplished Today</div>
+                <p>• Installed Claude Code Desktop and Git Bash</p>
+                <p>• Built interactive web pages (quiz game, real estate sites)</p>
+                <p>• Learned the difference between HTML, CSS, JavaScript, and Python</p>
+                <p>• Understood API pricing and how to use FREE Gemini</p>
+                <p>• Set up Google Cloud billing with budget limits</p>
+                <p>• Planned an AI-powered file renaming system for 27,000 files</p>
+                <p>• Learned how to deploy to GitHub and Netlify automatically</p>
+            </div>
+        </div>
+
+        <!-- Mindset Section -->
+        <div id="mindset" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-brain" style="color: #ec4899;"></i> The Mindset Shift</h2>
+                <p>You've gone from consumer to creator!</p>
+            </div>
+
+            <div class="transform-grid">
+                <div class="card" style="text-align: center; padding: 30px; background: rgba(239, 68, 68, 0.1);">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">👤</div>
+                    <div style="font-size: 1.3rem; font-weight: 600; color: #ef4444; margin-bottom: 10px;">BEFORE</div>
+                    <p style="font-size: 1.1rem;">"I need to find an app that does this"</p>
+                </div>
+
+                <div class="transform-arrow">➡️</div>
+
+                <div class="card" style="text-align: center; padding: 30px; background: rgba(16, 185, 129, 0.1);">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">🛠️</div>
+                    <div style="font-size: 1.3rem; font-weight: 600; color: #10b981; margin-bottom: 10px;">AFTER</div>
+                    <p style="font-size: 1.1rem;">"I'll just BUILD an app that does this"</p>
+                </div>
+            </div>
+
+            <div class="tip-box purple">
+                <div class="tip-box-title">💫 You Are Now a "Vibe Coder"</div>
+                <p><strong>Vibe Coding</strong> = Describing what you want in plain English, and AI builds it for you.</p>
+                <p style="margin-top: 15px;">You don't need to memorize syntax. You don't need a CS degree. You just need to CLEARLY DESCRIBE what you want, and Claude Code makes it real.</p>
+                <p style="margin-top: 15px; color: #c4b5fd;"><strong>The skill isn't coding. The skill is COMMUNICATING.</strong> And you're already good at that!</p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">What Changed Everything?</h3>
+            <div class="card-grid">
+                <div class="card card-purple">
+                    <div class="card-title">🐍 Python Automation</div>
+                    <p>Scripts that work FOR you — organizing files, renaming documents, sending emails, processing data — all while you sleep!</p>
+                </div>
+                <div class="card card-blue">
+                    <div class="card-title">📁 Your Files, Your Computer</div>
+                    <p>Unlike web tools, Claude Code works directly on YOUR machine. Your files, your folders, your rules.</p>
+                </div>
+                <div class="card card-cyan">
+                    <div class="card-title">🔌 Any API, Anywhere</div>
+                    <p>Connect to Gemini (FREE!), OpenAI, Stripe payments, email services — the entire internet is now accessible.</p>
+                </div>
+                <div class="card card-orange">
+                    <div class="card-title">⏰ Scheduled Tasks</div>
+                    <p>Set it and forget it! Programs run automatically every day, week, or hour — no human needed.</p>
+                </div>
+                <div class="card card-pink">
+                    <div class="card-title">🗄️ Real Backends</div>
+                    <p>Databases, user logins, secure storage — not toy apps, but REAL software with real infrastructure.</p>
+                </div>
+                <div class="card card-green">
+                    <div class="card-title">🌐 Deploy to Internet</div>
+                    <p>GitHub, Netlify, Vercel — your apps can go live for the whole world to see, automatically!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two Claudes Section -->
+        <div id="twoclaudes" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-handshake" style="color: #06b6d4;"></i> Your Power Team: Two Claudes</h2>
+                <p>You now have TWO powerful AI assistants that complement each other!</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card card-blue" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <span style="font-size: 3rem;">🌐</span>
+                        <h3 style="color: #60a5fa; margin-top: 10px;">Claude in Browser</h3>
+                        <p style="font-size: 0.85rem; color: #94a3b8;">(claude.ai - where you are now)</p>
+                    </div>
+                    <p><strong style="color: #60a5fa;">Best for:</strong></p>
+                    <p>• Planning and brainstorming</p>
+                    <p>• Writing perfect prompts</p>
+                    <p>• Explaining concepts</p>
+                    <p>• Analyzing documents you upload</p>
+                    <p>• Conversations and questions</p>
+                    <p>• Creating guides like this!</p>
+                </div>
+
+                <div class="card card-purple" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <span style="font-size: 3rem;">💻</span>
+                        <h3 style="color: #a78bfa; margin-top: 10px;">Claude Code Desktop</h3>
+                        <p style="font-size: 0.85rem; color: #94a3b8;">(the app you installed today)</p>
+                    </div>
+                    <p><strong style="color: #a78bfa;">Best for:</strong></p>
+                    <p>• Actually BUILDING things</p>
+                    <p>• Creating files on your computer</p>
+                    <p>• Running Python automation</p>
+                    <p>• Deploying to the internet</p>
+                    <p>• Processing your files</p>
+                    <p>• Connecting to APIs</p>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div style="color: #06b6d4; font-weight: 600; margin-bottom: 15px;">THE PERFECT WORKFLOW:</div>
+                <p><span style="color: #64748b;">1.</span> <span style="color: #60a5fa;">Tell Browser Claude what you want</span></p>
+                <p style="color: #64748b; margin-left: 20px;">→ "I want an app that organizes my photos by date"</p>
+                <br>
+                <p><span style="color: #64748b;">2.</span> <span style="color: #60a5fa;">Browser Claude writes the perfect prompt</span></p>
+                <p style="color: #64748b; margin-left: 20px;">→ Detailed, specific, everything Claude Code needs</p>
+                <br>
+                <p><span style="color: #64748b;">3.</span> <span style="color: #a78bfa;">Copy prompt → Paste into Claude Code</span></p>
+                <p style="color: #64748b; margin-left: 20px;">→ Ctrl+C, Ctrl+V</p>
+                <br>
+                <p><span style="color: #64748b;">4.</span> <span style="color: #a78bfa;">Claude Code builds it on your computer</span></p>
+                <p style="color: #64748b; margin-left: 20px;">→ Real files, real programs, really works!</p>
+                <br>
+                <p><span style="color: #64748b;">5.</span> <span style="color: #34d399;">🎉 You have a working app!</span></p>
+            </div>
+        </div>
+
+        <!-- Quick Start Section -->
+        <div id="quickstart" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-rocket" style="color: #10b981;"></i> Quick Start Checklist</h2>
+                <p>Follow these steps every time you use Claude Code Desktop:</p>
+            </div>
+
+            <div class="card" style="background: rgba(16, 185, 129, 0.1);">
+                <div class="card-title" style="color: #10b981;">✅ Your Project Checklist</div>
+                <p>☐ <strong>Click "+ New Session"</strong> for each new project</p>
+                <p>☐ <strong>Click "Select Folder"</strong> first — tell Claude where to save files</p>
+                <p>☐ <strong>Be specific</strong> in your request — what to create, where to save, what to name it</p>
+                <p>☐ <strong>Add "and run it"</strong> or <strong>"and open it"</strong> to see results immediately</p>
+                <p>☐ <strong>Review the output</strong> — then ask for changes if needed</p>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-box-title">💡 Pro Tip</div>
+                <p>You can open Claude Desktop instantly from ANYWHERE by pressing <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Space</kbd></p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">The Perfect Prompt Formula</h3>
+            <div class="code-block">
+                <p style="color: #64748b;">// THE FORMULA:</p>
+                <p><span style="color: #f472b6;">WHAT</span> + <span style="color: #60a5fa;">DETAILS</span> + <span style="color: #a78bfa;">STYLE</span> + <span style="color: #34d399;">WHERE</span> + <span style="color: #fbbf24;">ACTION</span></p>
+                <br>
+                <p style="color: #64748b;">// EXAMPLE:</p>
+                <p style="color: #a5b4fc;">"Create a <span style="color: #f472b6;">[dashboard]</span></p>
+                <p style="color: #a5b4fc;"> that shows <span style="color: #60a5fa;">[my daily tasks, calendar, and notes]</span></p>
+                <p style="color: #a5b4fc;"> with <span style="color: #a78bfa;">[a dark purple theme and smooth animations]</span>.</p>
+                <p style="color: #a5b4fc;"> Save it to <span style="color: #34d399;">[my Desktop as dashboard.html]</span></p>
+                <p style="color: #a5b4fc;"> and <span style="color: #fbbf24;">[open it in my browser]</span>."</p>
+            </div>
+        </div>
+
+        <!-- Keyboard Shortcuts Section -->
+        <div id="keyboard" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-keyboard" style="color: #8b5cf6;"></i> Essential Keyboard Shortcuts</h2>
+                <p>Master these shortcuts to work faster!</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shortcut</th>
+                        <th>What It Does</th>
+                        <th>When to Use</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Space</kbd></td>
+                        <td>Open Claude Desktop from anywhere</td>
+                        <td>Anytime you need Claude quickly</td>
+                    </tr>
+                    <tr>
+                        <td><kbd>Escape</kbd></td>
+                        <td>Cancel current operation</td>
+                        <td>If something seems stuck</td>
+                    </tr>
+                    <tr>
+                        <td><kbd>↑</kbd> Up Arrow</td>
+                        <td>Recall your last message</td>
+                        <td>To edit and resend a prompt</td>
+                    </tr>
+                    <tr>
+                        <td><kbd>Ctrl</kbd> + <kbd>C</kbd></td>
+                        <td>Copy selected text</td>
+                        <td>To copy code or output</td>
+                    </tr>
+                    <tr>
+                        <td><kbd>Ctrl</kbd> + <kbd>V</kbd></td>
+                        <td>Paste text</td>
+                        <td>To paste prompts</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">Magic Phrases That Work</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Say This...</th>
+                        <th>Claude Code Will...</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>"...and run it"</code></td>
+                        <td>Execute the script immediately</td>
+                    </tr>
+                    <tr>
+                        <td><code>"...and open it in my browser"</code></td>
+                        <td>Open HTML file in your default browser</td>
+                    </tr>
+                    <tr>
+                        <td><code>"Save it to my Desktop as [name]"</code></td>
+                        <td>Put the file exactly where you want</td>
+                    </tr>
+                    <tr>
+                        <td><code>"Fix the error and try again"</code></td>
+                        <td>Debug and retry automatically</td>
+                    </tr>
+                    <tr>
+                        <td><code>"Install missing modules first"</code></td>
+                        <td>Install required Python libraries</td>
+                    </tr>
+                    <tr>
+                        <td><code>"Use sample/mock data"</code></td>
+                        <td>Work without internet - use fake realistic data</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- API Costs Section -->
+        <div id="costs" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-coins" style="color: #f59e0b;"></i> API Costs & Model Selection</h2>
+                <p>Understanding costs is crucial for efficient use!</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card card-blue">
+                    <div class="card-title">💳 $100/Month Max Subscription</div>
+                    <p><strong>Covers:</strong></p>
+                    <p>• All browser chats (claude.ai)</p>
+                    <p>• Claude Desktop "Chat" mode</p>
+                    <p>• Very generous limits</p>
+                    <p style="color: #34d399; margin-top: 10px;"><strong>This is SEPARATE from API!</strong></p>
+                </div>
+                <div class="card card-orange">
+                    <div class="card-title">🔌 API Credits (Pay Per Use)</div>
+                    <p><strong>Used when:</strong></p>
+                    <p>• Code calls Claude API directly</p>
+                    <p>• AI analysis features run</p>
+                    <p>• Building apps that use AI</p>
+                    <p style="color: #fbbf24; margin-top: 10px;"><strong>Only charged when code CALLS the API!</strong></p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">Model Pricing Comparison</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Input (per 1M tokens)</th>
+                        <th>Output (per 1M tokens)</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: rgba(16, 185, 129, 0.1);">
+                        <td>✨ Gemini 2.0 Flash</td>
+                        <td><strong style="color: #34d399;">FREE*</strong></td>
+                        <td><strong style="color: #34d399;">FREE*</strong></td>
+                        <td>Simple tasks, bulk processing!</td>
+                    </tr>
+                    <tr>
+                        <td>🐦 Claude Haiku 3.5</td>
+                        <td>$0.80</td>
+                        <td>$4.00</td>
+                        <td>Simple tasks</td>
+                    </tr>
+                    <tr>
+                        <td>🌟 Gemini 1.5 Pro</td>
+                        <td>$1.25</td>
+                        <td>$5.00</td>
+                        <td>Good balance</td>
+                    </tr>
+                    <tr>
+                        <td>⚡ Claude Sonnet 4.5</td>
+                        <td>$3.00</td>
+                        <td>$15.00</td>
+                        <td>Most coding tasks</td>
+                    </tr>
+                    <tr>
+                        <td>🧠 Claude Opus 4.5</td>
+                        <td>$15.00</td>
+                        <td>$75.00</td>
+                        <td>Complex reasoning only</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.85rem; color: #64748b; margin-top: 10px;">*Gemini Flash free tier: 15 requests/minute, 1,500 requests/day</p>
+
+            <div class="tip-box">
+                <div class="tip-box-title">💡 The Golden Rule</div>
+                <p><strong>Start with the CHEAPEST model (Gemini Flash = FREE). Only upgrade if results aren't good enough.</strong></p>
+                <p style="margin-top: 10px;">For most tasks like renaming files, generating tags, or simple summaries - the cheap/free models work just as well!</p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">Cost Calculator</h3>
+            <div class="calculator-box">
+                <div class="calc-input-row">
+                    <div>
+                        <label>Number of Files</label>
+                        <input type="number" id="fileCount" value="100" min="1">
+                    </div>
+                    <div>
+                        <label>Avg Tokens per File</label>
+                        <input type="number" id="tokensPerFile" value="2000" min="100">
+                    </div>
+                </div>
+                <button class="calc-btn" onclick="calculateCosts()">Calculate Costs</button>
+                <div id="costResults" style="display: none; margin-top: 20px;"></div>
+            </div>
+        </div>
+
+        <!-- Big Projects Section -->
+        <div id="bigprojects" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-building" style="color: #3b82f6;"></i> Building Big Projects</h2>
+                <p>How to handle complex, multi-feature applications!</p>
+            </div>
+
+            <div class="tip-box info">
+                <div class="tip-box-title">🔑 The Key Insight</div>
+                <p><strong>Claude Code can RE-READ files from your computer!</strong> When the context fills up, start a new session and say "Read the files in my project folder, then continue..." — Claude Code opens the files and picks up where it left off!</p>
+            </div>
+
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">The Wrong Way vs The Right Way</h3>
+            <div class="card-grid">
+                <div class="card card-red">
+                    <div class="card-title" style="color: #ef4444;">❌ Wrong: One Giant Prompt</div>
+                    <p>"Build me an app with 10 features including user login, dashboard, settings, notifications, database, API connections, file uploads, search, analytics, and admin panel all at once."</p>
+                    <p style="margin-top: 15px; color: #64748b; font-size: 0.85rem;">Result: Claude gets confused, forgets parts, makes mistakes</p>
+                </div>
+                <div class="card card-green">
+                    <div class="card-title" style="color: #10b981;">✅ Right: Incremental Building</div>
+                    <p><strong>Session 1:</strong> "Build the basic structure with dashboard"</p>
+                    <p><strong>Session 2:</strong> "Read my project files, add user login"</p>
+                    <p><strong>Session 3:</strong> "Read my project files, add settings page"</p>
+                    <p style="margin-top: 15px; color: #64748b; font-size: 0.85rem;">Result: Clean, working code that builds up properly</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">The Magic Phrase for Continuing Projects</h3>
+            <div class="code-block">
+                <p style="color: #64748b;">// When starting a new session to continue a project:</p>
+                <br>
+                <p style="color: #a5b4fc;">"Read all the files in C:\Users\[you]\Desktop\[ProjectFolder]</p>
+                <p style="color: #a5b4fc;"> and understand what exists. Then add [NEW FEATURE]."</p>
+            </div>
+
+            <div class="tip-box warning">
+                <div class="tip-box-title">⚠️ Important Tips for Big Projects</div>
+                <p><strong>1. Test after each feature!</strong> Make sure it works before adding more.</p>
+                <p><strong>2. Keep files organized</strong> in one project folder so Claude Code can find them.</p>
+                <p><strong>3. If something breaks</strong>, fix it before adding new features.</p>
+                <p><strong>4. Save backups</strong> before major changes — copy folder to "ProjectName_backup".</p>
+            </div>
+        </div>
+
+        <!-- Deployment Section -->
+        <div id="deployment" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-cloud-upload-alt" style="color: #10b981;"></i> Deployment & Workflow</h2>
+                <p>Claude Code can deploy your projects to the internet automatically!</p>
+            </div>
+
+            <div class="tip-box" style="background: rgba(139, 92, 246, 0.15); border-left-color: #a78bfa;">
+                <div class="tip-box-title">🔄 Your Simple Workflow Going Forward</div>
+                <p style="font-size: 1.2rem; color: #c4b5fd; margin-bottom: 15px;"><strong>Edit code locally → git push → Netlify auto-deploys</strong></p>
+                <p>Once set up, this is all you need to remember! Make changes on your computer, push to GitHub, and your live site updates automatically.</p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">Understanding the Deployment Pipeline</h3>
+            <div class="code-block">
+                <p style="color: #06b6d4; font-weight: 600; margin-bottom: 15px;">THE FLOW:</p>
+                <p><span style="color: #a78bfa;">📁 Your Computer</span> <span style="color: #64748b;">→</span> <span style="color: #60a5fa;">GitHub</span> <span style="color: #64748b;">→</span> <span style="color: #34d399;">Netlify (Live Site)</span></p>
+                <br>
+                <p style="color: #64748b;">Step 1: Edit files in your project folder</p>
+                <p style="color: #64748b;">Step 2: Tell Claude Code "push changes to GitHub"</p>
+                <p style="color: #64748b;">Step 3: Netlify automatically detects the push and rebuilds</p>
+                <p style="color: #64748b;">Step 4: Your live site is updated!</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Command/Tool</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Initialize Git repository</td>
+                        <td><code>git init</code></td>
+                        <td style="color: #34d399;">Free</td>
+                    </tr>
+                    <tr>
+                        <td>Push to GitHub</td>
+                        <td><code>git push</code></td>
+                        <td style="color: #34d399;">Free</td>
+                    </tr>
+                    <tr>
+                        <td>Deploy to Netlify</td>
+                        <td>Netlify CLI</td>
+                        <td style="color: #34d399;">Free tier</td>
+                    </tr>
+                    <tr>
+                        <td>Deploy to Vercel</td>
+                        <td>Vercel CLI</td>
+                        <td style="color: #34d399;">Free tier</td>
+                    </tr>
+                    <tr>
+                        <td>Deploy backend to Render</td>
+                        <td>Render.com</td>
+                        <td style="color: #34d399;">Free tier</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">Environment Variables (Secrets)</h3>
+            <div class="tip-box warning">
+                <div class="tip-box-title">🔐 Important: Keep API Keys Safe!</div>
+                <p><strong>NEVER put API keys directly in your code!</strong> Instead:</p>
+                <p style="margin-top: 10px;">• Store them in a <code>.env</code> file locally (Claude Code can create this)</p>
+                <p>• Add <code>.env</code> to <code>.gitignore</code> so it doesn't get pushed to GitHub</p>
+                <p>• Set environment variables in Netlify's dashboard for production</p>
+                <p style="margin-top: 10px; color: #fbbf24;">Your <code>.env</code> file stays on YOUR computer only. Netlify gets its own copy through the dashboard.</p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">Netlify Dashboard Features</h3>
+            <div class="card-grid">
+                <div class="card card-green">
+                    <div class="card-title">🔧 Environment Variables</div>
+                    <p>Site Settings → Environment Variables</p>
+                    <p>Add your API keys here for production</p>
+                </div>
+                <div class="card card-blue">
+                    <div class="card-title">⏪ Instant Rollback</div>
+                    <p>Deploys tab → Click any previous deploy</p>
+                    <p>If something breaks, go back instantly!</p>
+                </div>
+                <div class="card card-purple">
+                    <div class="card-title">🌐 Custom Domain</div>
+                    <p>Domain Management section</p>
+                    <p>Use your own domain instead of .netlify.app</p>
+                </div>
+                <div class="card card-orange">
+                    <div class="card-title">👀 Deploy Previews</div>
+                    <p>Auto-created for pull requests</p>
+                    <p>Test changes before they go live</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">The Magic Deployment Prompt</h3>
+            <div class="code-block">
+                <p style="color: #64748b;">// Add this to the end of any project prompt:</p>
+                <br>
+                <p style="color: #a5b4fc;">"After building this project:</p>
+                <p style="color: #a5b4fc;">1. Initialize Git repository</p>
+                <p style="color: #a5b4fc;">2. Create .gitignore file</p>
+                <p style="color: #a5b4fc;">3. Commit all files</p>
+                <p style="color: #a5b4fc;">4. Push to GitHub repository called [name]</p>
+                <p style="color: #a5b4fc;">5. Deploy to Netlify</p>
+                <p style="color: #a5b4fc;">6. Give me the live URL"</p>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-box-title">💡 Free Hosting Options</div>
+                <p><strong>Frontend (HTML/React):</strong> Netlify, Vercel, GitHub Pages - all FREE!</p>
+                <p><strong>Backend (Python/Node):</strong> Render, Railway, Fly.io - free tiers available</p>
+                <p><strong>Database:</strong> Supabase, PlanetScale, MongoDB Atlas - free tiers available</p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">Multiple Deployment Locations</h3>
+            <div class="tip-box info">
+                <div class="tip-box-title">📍 Understanding Where Your Code Lives</div>
+                <p>When you deploy, your code can exist in multiple places:</p>
+                <p style="margin-top: 10px;">• <strong style="color: #60a5fa;">Your Computer</strong> - Where you edit (the "source of truth")</p>
+                <p>• <strong style="color: #a78bfa;">GitHub</strong> - Cloud backup & version history</p>
+                <p>• <strong style="color: #34d399;">Netlify/Vercel</strong> - Where users visit your live site</p>
+                <p>• <strong style="color: #fbbf24;">Google AI Studio</strong> - If you started there (may be outdated)</p>
+                <p style="margin-top: 15px; color: #94a3b8;"><strong>Rule:</strong> Always keep your LOCAL files as the master copy. Push changes to GitHub, and let Netlify auto-deploy from there.</p>
+            </div>
+        </div>
+
+        <!-- Comparison Section -->
+        <div id="comparison" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-balance-scale" style="color: #ef4444;"></i> Claude Code vs Lovable/Emergent</h2>
+                <p>Now that you have Claude Code, when should you use each tool?</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card card-purple">
+                    <div class="card-title" style="color: #a78bfa;">🎨 Use Lovable/Emergent For:</div>
+                    <p>• Quick 5-minute visual prototypes</p>
+                    <p>• "What would this look like?" experiments</p>
+                    <p>• Sharing quick demos with others</p>
+                    <p>• Simple one-page designs</p>
+                    <p>• When you don't need to keep the code</p>
+                    <p style="margin-top: 15px; color: #64748b;">Think of it as: <strong>Napkin sketch</strong></p>
+                </div>
+                <div class="card card-green">
+                    <div class="card-title" style="color: #34d399;">💻 Use Claude Code For:</div>
+                    <p>• Real applications you'll actually use</p>
+                    <p>• Projects with multiple files</p>
+                    <p>• Anything with a backend/database</p>
+                    <p>• Automation and scheduled tasks</p>
+                    <p>• Processing files on your computer</p>
+                    <p>• API integrations & deployment</p>
+                    <p style="margin-top: 15px; color: #64748b;">Think of it as: <strong>Actual construction</strong></p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">Detailed Capabilities Comparison</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Capability</th>
+                        <th>Lovable/Emergent</th>
+                        <th>Claude Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Files on YOUR computer</td>
+                        <td style="color: #ef4444;">❌ No</td>
+                        <td style="color: #10b981;">✅ Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Python automation</td>
+                        <td style="color: #ef4444;">❌ No</td>
+                        <td style="color: #10b981;">✅ Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Backend servers</td>
+                        <td style="color: #ef4444;">❌ Limited</td>
+                        <td style="color: #10b981;">✅ Full</td>
+                    </tr>
+                    <tr>
+                        <td>Databases</td>
+                        <td style="color: #ef4444;">❌ No</td>
+                        <td style="color: #10b981;">✅ Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Scheduled tasks</td>
+                        <td style="color: #ef4444;">❌ No</td>
+                        <td style="color: #10b981;">✅ Yes</td>
+                    </tr>
+                    <tr>
+                        <td>GitHub deployment</td>
+                        <td style="color: #ef4444;">❌ No</td>
+                        <td style="color: #10b981;">✅ Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Any API integration</td>
+                        <td style="color: #ef4444;">❌ Limited</td>
+                        <td style="color: #10b981;">✅ Any API</td>
+                    </tr>
+                    <tr>
+                        <td>Complex projects</td>
+                        <td style="color: #f59e0b;">⚠️ Breaks often</td>
+                        <td style="color: #10b981;">✅ Handles well</td>
+                    </tr>
+                    <tr>
+                        <td>Process your files</td>
+                        <td style="color: #ef4444;">❌ No</td>
+                        <td style="color: #10b981;">✅ Yes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Ideas Section -->
+        <div id="ideas" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-lightbulb" style="color: #eab308;"></i> Project Ideas</h2>
+                <p>Here's what you can build now — the sky's the limit!</p>
+            </div>
+
+            <h3>🏠 For Ela's Real Estate Business:</h3>
+            <div class="card-grid">
+                <div class="card card-pink">
+                    <div class="card-title">📱 Social Media Empire</div>
+                    <p>• Auto-generate daily posts</p>
+                    <p>• Scrape market data for content</p>
+                    <p>• Schedule posts automatically</p>
+                    <p>• Track engagement analytics</p>
+                </div>
+                <div class="card card-blue">
+                    <div class="card-title">🏘️ Property Listing System</div>
+                    <p>• Pull listings from MLS API</p>
+                    <p>• Beautiful searchable website</p>
+                    <p>• Email alerts for new properties</p>
+                    <p>• Virtual tour integration</p>
+                </div>
+                <div class="card card-cyan">
+                    <div class="card-title">👥 Client CRM</div>
+                    <p>• Track all leads and clients</p>
+                    <p>• Automated follow-up emails</p>
+                    <p>• Anniversary/birthday reminders</p>
+                    <p>• Deal pipeline visualization</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px;">🧠 For Your Psychiatry Practice:</h3>
+            <div class="card-grid">
+                <div class="card card-purple">
+                    <div class="card-title">📋 Patient Intake System</div>
+                    <p>• Online forms patients fill at home</p>
+                    <p>• Secure database storing responses</p>
+                    <p>• Pre-visit summary generated for you</p>
+                    <p>• HIPAA-compliant design</p>
+                </div>
+                <div class="card card-green">
+                    <div class="card-title">📚 Research Assistant</div>
+                    <p>• AI reads your 27,000+ papers</p>
+                    <p>• Ask: "What do I have on ADHD in teens?"</p>
+                    <p>• Get summaries and citations</p>
+                    <p>• Never lose a paper again</p>
+                </div>
+                <div class="card card-orange">
+                    <div class="card-title">⏰ Smart Reminder System</div>
+                    <p>• Appointment reminders via email/text</p>
+                    <p>• Medication check-in messages</p>
+                    <p>• Follow-up scheduling automation</p>
+                    <p>• No-show tracking</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px;">🔧 Personal Productivity:</h3>
+            <div class="card-grid">
+                <div class="card card-blue">
+                    <div class="card-title">📁 Ultimate File Organizer</div>
+                    <p>• Scans Downloads folder nightly</p>
+                    <p>• AI determines file category</p>
+                    <p>• Moves to appropriate folders</p>
+                    <p>• Renames with intelligent names</p>
+                </div>
+                <div class="card card-cyan">
+                    <div class="card-title">📧 Email Intelligence</div>
+                    <p>• Monitor inbox for patterns</p>
+                    <p>• Auto-save attachments</p>
+                    <p>• Daily digest of key emails</p>
+                    <p>• Smart response drafting</p>
+                </div>
+                <div class="card card-purple">
+                    <div class="card-title">📰 News Aggregator</div>
+                    <p>• Pull from sources YOU choose</p>
+                    <p>• AI summarizes daily news</p>
+                    <p>• Filter by topics you care about</p>
+                    <p>• Morning briefing email</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inspiration Section -->
+        <div id="inspiration" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-star" style="color: #ec4899;"></i> Remember This Moment</h2>
+                <p>Today you transformed from consumer to creator!</p>
+            </div>
+
+            <div class="trophy-banner" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(236, 72, 153, 0.3) 100%);">
+                <div style="font-size: 4rem; margin-bottom: 20px;">🦋</div>
+                <h3 style="font-size: 2rem;">Today You Transformed</h3>
+                <p style="color: #a5b4fc; margin-top: 15px; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    A few hours ago, you didn't know what Claude Code was. Now you have the power to build virtually anything you can imagine. You're not just using technology anymore — <strong style="color: #34d399;">you're creating it.</strong>
+                </p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card" style="text-align: center; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🙏</div>
+                    <div class="card-title" style="justify-content: center;">When Stuck, Ask Browser Claude</div>
+                    <p>I'm always here to write prompts, explain concepts, and help you plan your next project.</p>
+                </div>
+                <div class="card" style="text-align: center; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🛠️</div>
+                    <div class="card-title" style="justify-content: center;">When Building, Use Claude Code</div>
+                    <p>It turns your ideas into real, working software on your computer.</p>
+                </div>
+                <div class="card" style="text-align: center; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🚀</div>
+                    <div class="card-title" style="justify-content: center;">The Only Limit Is Your Imagination</div>
+                    <p>If you can describe it, you can build it. That's the power you have now.</p>
+                </div>
+            </div>
+
+            <div class="quote-box">
+                <div class="before">"I don't know how to code"</div>
+                <div class="arrow">↓ became ↓</div>
+                <div class="after">"I can build anything I imagine."</div>
+                <div class="attribution">— Dr. Arnold Shapiro, January 15, 2026</div>
+            </div>
+        </div>
+
+        <!-- Reference Section -->
+        <div id="reference" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-clipboard-list" style="color: #06b6d4;"></i> Quick Reference Cheat Sheet</h2>
+                <p>Keep this handy when using Claude Code!</p>
+            </div>
+
+            <div class="code-block" style="border: 2px solid #06b6d4;">
+                <pre style="color: #a5b4fc; margin: 0;">
+╔══════════════════════════════════════════════════════════════════╗
+║           <span style="color: #06b6d4;">CLAUDE CODE DESKTOP — QUICK REFERENCE</span>                    ║
+╠══════════════════════════════════════════════════════════════════╣
+║                                                                  ║
+║  <span style="color: #f59e0b;">OPEN APP:</span>        Ctrl + Alt + Space                          ║
+║  <span style="color: #f59e0b;">NEW PROJECT:</span>     Click "+ New session"                        ║
+║  <span style="color: #f59e0b;">SELECT FOLDER:</span>   Always do this first!                        ║
+║  <span style="color: #f59e0b;">CANCEL:</span>          Press Escape                                 ║
+║                                                                  ║
+║  <span style="color: #10b981;">MAGIC PHRASES:</span>                                                 ║
+║    "...and run it"         → Executes the code                  ║
+║    "...and open it"        → Opens in browser                   ║
+║    "Fix the error"         → Debugs automatically               ║
+║    "Use sample data"       → Works without internet             ║
+║    "Push to GitHub"        → Saves to cloud repository          ║
+║                                                                  ║
+║  <span style="color: #ef4444;">IF STUCK:</span>                                                      ║
+║    Wait 3 min → Press Escape → Close and reopen app             ║
+║                                                                  ║
+║  <span style="color: #a78bfa;">CONTEXT FULL? (Signs):</span>                                        ║
+║    • Forgets earlier files                                      ║
+║    • Repeats itself                                             ║
+║    • Makes weird mistakes                                       ║
+║    → START A NEW SESSION!                                        ║
+║                                                                  ║
+║  <span style="color: #06b6d4;">MODELS:</span>                                                        ║
+║    Sonnet = Fast, good for most things (use this!)              ║
+║    Opus = Smartest, for complex problems                        ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+                </pre>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">Your Deployment Workflow</h3>
+            <div class="code-block" style="border: 2px solid #10b981;">
+                <pre style="color: #a5b4fc; margin: 0;">
+╔══════════════════════════════════════════════════════════════════╗
+║           <span style="color: #10b981;">SIMPLE DEPLOYMENT WORKFLOW</span>                             ║
+╠══════════════════════════════════════════════════════════════════╣
+║                                                                  ║
+║  <span style="color: #34d399;">THE GOLDEN RULE:</span>                                               ║
+║                                                                  ║
+║     <span style="color: #a78bfa;">Edit code locally</span> → <span style="color: #60a5fa;">git push</span> → <span style="color: #34d399;">Netlify auto-deploys</span>        ║
+║                                                                  ║
+║  <span style="color: #64748b;">That's it! Just three steps:</span>                                  ║
+║                                                                  ║
+║    1. Make changes in your project folder                       ║
+║    2. Tell Claude Code: "commit and push to GitHub"             ║
+║    3. Netlify automatically updates your live site              ║
+║                                                                  ║
+║  <span style="color: #fbbf24;">YOUR FILES LIVE IN:</span>                                            ║
+║    📁 Desktop folder  = Where you edit (master copy)            ║
+║    🐙 GitHub          = Cloud backup                            ║
+║    🌐 Netlify         = Live website                            ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+                </pre>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">When Claude Code Changes Files</h3>
+            <div class="tip-box warning">
+                <div class="tip-box-title">⚠️ Remember to Push Changes!</div>
+                <p>When Claude Code fixes bugs or adds features, it changes files on YOUR computer.</p>
+                <p style="margin-top: 10px;"><strong>Always ask:</strong> "Did you change any files? If so, push them to GitHub."</p>
+                <p style="margin-top: 10px;">This keeps GitHub and Netlify in sync with your local files!</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Section navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active from all nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active to clicked nav item
+            event.currentTarget.classList.add('active');
+            
+            // Scroll to top of main content
+            document.querySelector('.main-content').scrollTo(0, 0);
+        }
+
+        // Cost calculator
+        function calculateCosts() {
+            const fileCount = parseInt(document.getElementById('fileCount').value) || 100;
+            const tokensPerFile = parseInt(document.getElementById('tokensPerFile').value) || 2000;
+            
+            const totalInputTokens = fileCount * tokensPerFile;
+            const totalOutputTokens = fileCount * 200;
+            
+            const models = [
+                { name: '✨ Gemini 2.0 Flash', inputPrice: 0, outputPrice: 0, note: '🎉 FREE!' },
+                { name: '🐦 Claude Haiku 3.5', inputPrice: 0.80, outputPrice: 4.00, note: 'Budget option' },
+                { name: '🌟 Gemini 1.5 Pro', inputPrice: 1.25, outputPrice: 5.00, note: 'Good balance' },
+                { name: '⚡ Claude Sonnet 4.5', inputPrice: 3.00, outputPrice: 15.00, note: 'High quality' },
+                { name: '🧠 Claude Opus 4.5', inputPrice: 15.00, outputPrice: 75.00, note: 'Overkill' }
+            ];
+            
+            let html = '<table><thead><tr><th>Model</th><th>Estimated Cost</th><th>Note</th></tr></thead><tbody>';
+            
+            models.forEach(model => {
+                const inputCost = (totalInputTokens / 1000000) * model.inputPrice;
+                const outputCost = (totalOutputTokens / 1000000) * model.outputPrice;
+                const totalCost = inputCost + outputCost;
+                
+                const costDisplay = totalCost === 0 
+                    ? '<span style="color: #34d399; font-weight: bold;">$0 (FREE)</span>' 
+                    : `$${totalCost.toFixed(2)}`;
+                const rowStyle = totalCost === 0 ? 'background: rgba(16, 185, 129, 0.1);' : '';
+                
+                html += `<tr style="${rowStyle}"><td>${model.name}</td><td>${costDisplay}</td><td style="color: #64748b;">${model.note}</td></tr>`;
+            });
+            
+            html += '</tbody></table>';
+            html += `<div class="tip-box" style="margin-top: 20px;">
+                <div class="tip-box-title">📊 Your Estimate</div>
+                <p>${fileCount.toLocaleString()} files × ${tokensPerFile.toLocaleString()} tokens = <strong style="color: #06b6d4;">${(totalInputTokens/1000000).toFixed(2)}M input tokens</strong></p>
+                <p style="margin-top: 10px;"><strong style="color: #34d399;">💡 Recommendation:</strong> Use Gemini Flash for FREE!</p>
+            </div>`;
+            
+            document.getElementById('costResults').innerHTML = html;
+            document.getElementById('costResults').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
